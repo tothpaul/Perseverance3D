@@ -1,0 +1,157 @@
+object MainForm: TMainForm
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 625
+  ClientWidth = 992
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Layout1: TLayout
+    Align = Top
+    Size.Width = 992.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Text1: TText
+      Align = Left
+      Text = 'URL'
+    end
+    object edURL: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Client
+      TabOrder = 1
+      Text = 
+        'https://mars.nasa.gov/system/resources/gltf_files/25042_Persever' +
+        'ance.glb'
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Size.Width = 832.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object btGo: TButton
+      Align = Right
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 902.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'GO!'
+      OnClick = btGoClick
+    end
+  end
+  object Viewport3D1: TViewport3D
+    Align = Client
+    Size.Width = 783.000000000000000000
+    Size.Height = 575.000000000000000000
+    Size.PlatformDefault = False
+    OnMouseDown = Viewport3D1MouseDown
+    OnMouseMove = Viewport3D1MouseMove
+    OnMouseWheel = Viewport3D1MouseWheel
+    object Light1: TLight
+      Color = claWhite
+      LightType = Directional
+      SpotCutOff = 180.000000000000000000
+      Position.X = -10.918548583984380000
+      Position.Y = -0.181915283203125000
+      RotationAngle.X = 346.351715087890600000
+      RotationAngle.Y = 29.644014358520510000
+      Width = 1.000000000000000000
+      Height = 1.000000000000000000
+      Depth = 1.000000000000000000
+      Quanternion = 
+        '(0.341594040393829,-0.239314422011375,0.0903934314846992,-0.9043' +
+        '6190366745)'
+    end
+    object root: TDummy
+      Width = 10.000000000000000000
+      Height = 10.000000000000000000
+      Depth = 10.000000000000000000
+    end
+  end
+  object Layout2: TLayout
+    Align = Left
+    Position.Y = 50.000000000000000000
+    Size.Width = 209.000000000000000000
+    Size.Height = 575.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    object TreeView1: TTreeView
+      Align = Client
+      Size.Width = 209.000000000000000000
+      Size.Height = 432.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      OnClick = TreeView1Click
+      Viewport.Width = 205.000000000000000000
+      Viewport.Height = 428.000000000000000000
+    end
+    object Layout3: TLayout
+      Align = Bottom
+      Position.Y = 432.000000000000000000
+      Size.Width = 209.000000000000000000
+      Size.Height = 143.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      object Label1: TLabel
+        Position.X = 8.000000000000000000
+        Position.Y = 16.000000000000000000
+        Size.Width = 81.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Translation'
+        TabOrder = 4
+      end
+      object Edit1: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 5
+        Position.X = 96.000000000000000000
+        Position.Y = 16.000000000000000000
+      end
+      object Label2: TLabel
+        Position.X = 8.000000000000000000
+        Position.Y = 48.000000000000000000
+        Size.Width = 81.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Rotation'
+        TabOrder = 2
+      end
+      object Edit2: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 3
+        Position.X = 96.000000000000000000
+        Position.Y = 48.000000000000000000
+      end
+      object Label3: TLabel
+        Position.X = 8.000000000000000000
+        Position.Y = 80.000000000000000000
+        Size.Width = 81.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Scale'
+        TabOrder = 0
+      end
+      object Edit3: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 1
+        Position.X = 96.000000000000000000
+        Position.Y = 80.000000000000000000
+      end
+    end
+  end
+  object NetHTTPClient: TNetHTTPClient
+    UserAgent = 'Embarcadero URI Client/1.0'
+    Left = 112
+    Top = 112
+  end
+end

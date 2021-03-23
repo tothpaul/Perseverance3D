@@ -6,6 +6,7 @@ interface
 
 uses
   Winapi.Windows,
+  System.UITypes,
   System.JSON,
   System.Generics.Collections,
   System.SysUtils,
@@ -93,6 +94,7 @@ type
     Name: string;
     BaseColorFactor: TArray<Single>;
     Image: Cardinal;
+    function GetColor: TAlphaColor;
   end;
 
   TGLBImage = record
@@ -392,6 +394,19 @@ begin
   Assert(Integer(Header.length) = SizeOf(Header) + 2 * SizeOf(Chunk) + Length(Script) + Length(FBuffer), 'Wrong data size');
 
   Parser.Load(Self, Script);
+end;
+
+{ TGLBMaterial }
+
+function TGLBMaterial.GetColor: TAlphaColor;
+begin
+  with TAlphaColorRec(Result) do
+  begin
+    R := Round(255 * BaseColorFactor[0]);
+    G := Round(255 * BaseColorFactor[1]);
+    B := Round(255 * BaseColorFactor[2]);
+    A := Round(255 * BaseColorFactor[3]);
+  end;
 end;
 
 end.
