@@ -24,7 +24,8 @@ uses
   System.Net.HttpClientComponent,
   Execute.GLB,
   Execute.GLB.OpenGL,
-  Execute.GLPanel;
+  Execute.GLPanel,
+  Execute.GLBBuilder;
 
 type
   TMain = class(TForm)
@@ -68,10 +69,90 @@ implementation
 {$R *.dfm}
 
 procedure TMain.FormCreate(Sender: TObject);
+//var
+//  Builder: TGLBBuilder;
+//  Prim: TGLBBuilderPrimitive;
+//  Mesh: TGLBBuilderMesh;
+//  Node: TGLBBuilderNode;
+//  Child: TGLBBuilderNode;
+//  Stream: TFileStream;
 begin
   Model := TGLBOpenGLModel.Create;
   GLPanel.OnSetup := GLSetup;
   GLPanel.OnPaint := GLPaint;
+
+// the code below was used to compare VCL with OpenGL and FMX version on a simple model
+// -> the Mesh WrapMode must be Original !
+// -> the Axis need to be reoriented (Scale < 0)
+// -> the Quaternion need a custom code
+
+
+//  Builder := TGLBBuilder.Create;
+//
+//  Prim := TGLBBuilderPrimitive.Create;
+//  Prim.AddPoint(-1, -1, 0);
+//  Prim.AddNormal(0, 0, 1);
+//  Prim.AddPoint(+1, -1, 0);
+//  Prim.AddNormal(0, 0, 1);
+//  Prim.AddPoint(-1, +1, 0);
+//  Prim.AddNormal(0, 0, 1);
+//  Prim.AddFace(0, 1, 2);
+//
+//  Mesh := Builder.AddMesh(Prim);
+//  Mesh.Material := Builder.AddMaterialColor($FFFF0000);
+//  Node := Builder.AddNode(True);
+//  Node.Mesh := Mesh;
+//
+//  Mesh := Builder.AddMesh(Prim);
+//  Mesh.Material := Builder.AddMaterialColor($FF00FF00);
+//  Child := Builder.AddNode(False);
+//  Child.Translate(0, 0, 2);
+//  Child.Mesh := Mesh;
+//  Node.AddNode(Child);
+//
+//  Mesh := Builder.AddMesh(Prim);
+//  Mesh.Material := Builder.AddMaterialColor($FFFFFF00);
+//  Child := Builder.AddNode(False);
+//  Child.Translate(2, 0, 0);
+//  Child.Mesh := Mesh;
+//  Node.AddNode(Child);
+//
+//  Mesh := Builder.AddMesh(Prim);
+//  Mesh.Material := Builder.AddMaterialColor($FF0000FF);
+//  Child := Builder.AddNode(False);
+//  Child.Translate(0, 2, 0);
+//  Child.Mesh := Mesh;
+//  Node.AddNode(Child);
+//
+//  Mesh := Builder.AddMesh(Prim);
+//  Mesh.Material := Builder.AddMaterialColor($FFFF00FF);
+//  Child := Builder.AddNode(False);
+//  Child.Translate(-2, 0, 0);
+//  Child.Rotate(0.707, 0.707, 0, 0); // X - 90°   https://quaternions.online/
+//  Child.Mesh := Mesh;
+//  Node.AddNode(Child);
+//
+//  Mesh := Builder.AddMesh(Prim);
+//  Mesh.Material := Builder.AddMaterialColor($FF00FFFF);
+//  Child := Builder.AddNode(False);
+//  Child.Translate(-1, 0, +1);
+//  Child.Rotate(0.707, 0, 0.707, 0); // Y - 90°
+//  Child.Mesh := Mesh;
+//  Node.AddNode(Child);
+//
+//  Mesh := Builder.AddMesh(Prim);
+//  Mesh.Material := Builder.AddMaterialColor($FF808080);
+//  Child := Builder.AddNode(False);
+//  Child.Translate(0, -1, +1);
+//  Child.Rotate(0.707, 0, 0, 0.707); // Z - 90°
+//  Child.Mesh := Mesh;
+//  Node.AddNode(Child);
+//
+//  Builder.SaveToFile('TEST.GLB');
+//  Builder.Free;
+//  Stream := TFileStream.Create('TEST.GLB', fmOpenRead);
+//  Model.LoadFromStream(Stream);
+//  Stream.Free;
 end;
 
 procedure TMain.FormDestroy(Sender: TObject);

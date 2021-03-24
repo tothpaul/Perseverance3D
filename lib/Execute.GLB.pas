@@ -248,6 +248,8 @@ begin
   if Model.FMaterials[AMaterial].Name <> '' then
     Exit;
 
+  Model.FMaterials[AMaterial].Name := materials[AMaterial].GetValue<string>('name');
+
   pbrMetallicRoughness := materials[AMaterial].GetValue<TJSONValue>('pbrMetallicRoughness');
 
   pbrMetallicRoughness.TryGetValue<TArray<Single>>('baseColorFactor', Model.FMaterials[AMaterial].BaseColorFactor);
@@ -382,7 +384,8 @@ begin
   Pad := Pad mod 4;
   if Pad <> 0 then
   begin
-    Stream.Seek(4 - Pad, TSeekOrigin.soCurrent);
+    pad := 4 - pad;
+    Stream.Seek(Pad, TSeekOrigin.soCurrent);
   end;
 
   Stream.Read(Chunk, SizeOf(Chunk));
@@ -391,7 +394,7 @@ begin
   SetLength(FBuffer, Chunk.chunkLength);
   Stream.Read(FBuffer[0], Chunk.chunkLength);
 
-  Assert(Integer(Header.length) = SizeOf(Header) + 2 * SizeOf(Chunk) + Length(Script) + Length(FBuffer), 'Wrong data size');
+  Assert(Integer(Header.length) = SizeOf(Header) + 2 * SizeOf(Chunk) + Length(Script) + pad + Length(FBuffer), 'Wrong data size');
 
   Parser.Load(Self, Script);
 end;

@@ -5,7 +5,8 @@ uses
   FMX.Forms,
   Perseverance.FMX.Main in 'Perseverance.FMX.Main.pas' {MainForm},
   Execute.GLB.FMX in '..\lib\Execute.GLB.FMX.pas',
-  Execute.GLB in '..\lib\Execute.GLB.pas';
+  Execute.GLB in '..\lib\Execute.GLB.pas',
+  Execute.GLBBuilder in '..\lib\Execute.GLBBuilder.pas';
 
 {$R *.res}
 

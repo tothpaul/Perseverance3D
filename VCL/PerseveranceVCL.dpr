@@ -5,7 +5,8 @@ uses
   Perseverance.VCL.Main in 'Perseverance.VCL.Main.pas' {Main},
   Execute.GLB in '..\lib\Execute.GLB.pas',
   Execute.GLPanel in '..\lib\Execute.GLPanel.pas' {GLPanel: TFrame},
-  Execute.GLB.OpenGL in '..\lib\Execute.GLB.OpenGL.pas';
+  Execute.GLB.OpenGL in '..\lib\Execute.GLB.OpenGL.pas',
+  Execute.GLBBuilder in '..\lib\Execute.GLBBuilder.pas';
 
 {$R *.res}
 
